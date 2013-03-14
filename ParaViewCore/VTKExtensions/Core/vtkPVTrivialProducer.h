@@ -23,9 +23,7 @@
 // However, in some cases, we still want to provide the downstream pipeline
 // information that the data is only a chunk of bigger dataset eg.
 // vtkPVGeometryFilter to avoid false boundaries between structured blocks.
-// Hence we use vtkPVTrivialProducer in that case. vtkPVTrivialProducer uses
-// vtkPVTrivialExtentTranslator which converts any request for the whole extent
-// to match extent if the data available to the producer.
+// Hence we use vtkPVTrivialProducer in that case. 
 
 #ifndef __vtkPVTrivialProducer_h
 #define __vtkPVTrivialProducer_h
@@ -33,7 +31,6 @@
 #include "vtkTrivialProducer.h"
 #include "vtkPVVTKExtensionsCoreModule.h" // needed for export macro
 
-class vtkPVTrivialExtentTranslator;
 struct vtkPVTrivialProducerInternal;
 
 class VTKPVVTKEXTENSIONSCORE_EXPORT vtkPVTrivialProducer : public vtkTrivialProducer
@@ -44,20 +41,10 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
-  // Set the data object that is "produced" by this producer.  It is
-  // never really modified.
-  // Overridden to pass the output to the vtkPVTrivialExtentTranslator.
-  virtual void SetOutput(vtkDataObject* output);
-
-  // Description:
   // Set the output data object as well as time information
   // for the requests.
+  virtual void SetOutput(vtkDataObject* output);
   virtual void SetOutput(vtkDataObject* output, double time);
-
-  // Description:
-  // Set the whole extent to use for the data this producer is producing.
-  vtkSetVector6Macro(WholeExtent, int);
-  vtkGetVector6Macro(WholeExtent, int);
 
   // Description:
   // If the output of the filter is topologically regular and
@@ -78,10 +65,6 @@ public:
 protected:
   vtkPVTrivialProducer();
   ~vtkPVTrivialProducer();
-
-  virtual void ReportReferences(vtkGarbageCollector*);
-  vtkPVTrivialExtentTranslator* PVExtentTranslator;
-  int WholeExtent[6];
 
   // Description:
   // Used to store any time step information. It assumes that the

@@ -112,9 +112,11 @@ int vtkImageVolumeRepresentation::ProcessViewRequest(
       vtkAlgorithm* inputAlgo = connection->GetProducer();
       vtkStreamingDemandDrivenPipeline* sddp =
         vtkStreamingDemandDrivenPipeline::SafeDownCast(inputAlgo->GetExecutive());
-      vtkExtentTranslator* translator =
-        sddp->GetExtentTranslator(connection->GetIndex());
-    
+      vtkExtentTranslator* translator = 0;
+      // TODO (berk)
+      // This needs to be fixed
+      /* sddp->GetExtentTranslator(connection->GetIndex()); */
+
       int extent[6] = {1, -1, 1, -1, 1, -1};
       sddp->GetWholeExtent(sddp->GetOutputInformation(connection->GetIndex()),
         extent);

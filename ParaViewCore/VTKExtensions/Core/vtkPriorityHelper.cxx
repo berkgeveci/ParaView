@@ -67,7 +67,7 @@ int vtkPriorityHelper::SetSplitUpdateExtent
                             processor*numProcessors + pass,
                             numProcessors*numPasses,
                             0); //ghost level
-      sddp->SetUpdateResolution(this->Port, resolution);
+      /* sddp->SetUpdateResolution(this->Port, resolution); */
       return 1;
       }
     }

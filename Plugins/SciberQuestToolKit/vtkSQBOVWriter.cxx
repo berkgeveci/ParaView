@@ -561,26 +561,15 @@ int vtkSQBOVWriter::RequestUpdateExtent(
         vtkSDDPipeline::WHOLE_EXTENT(),
         wholeExt.GetData());
 
-  vtkExtentTranslator *translator
-    = dynamic_cast<vtkExtentTranslator*>(inInfo->Get(vtkSDDPipeline::EXTENT_TRANSLATOR()));
-
-  translator->SetWholeExtent(wholeExt.GetData());
-  translator->SetNumberOfPieces(this->WorldSize);
-  translator->SetPiece(this->WorldRank);
-  translator->SetGhostLevel(0);
-  translator->PieceToExtent();
-  CartesianExtent updateExt;
-  translator->GetExtent(updateExt.GetData());
-
   inInfo->Set(
         vtkSDDPipeline::UPDATE_EXTENT(),
-        updateExt.GetData(),
+        wholeExt.GetData(),
         6);
 
   #ifdef SQTK_DEBUG
   oss
     << "WHOLE_EXTENT=" << wholeExt << endl
-    << "UPDATE_EXTENT=" << updateExt << endl
+    << "UPDATE_EXTENT=" << wholeExt << endl
     << "UPDATE_TIME_STEPS=" << time << endl;
   pCerr() << oss.str() << endl;
   #endif

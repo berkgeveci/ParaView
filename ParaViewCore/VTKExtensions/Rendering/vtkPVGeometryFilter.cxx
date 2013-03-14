@@ -175,10 +175,6 @@ vtkPVGeometryFilter::vtkPVGeometryFilter ()
 
   this->HideInternalAMRFaces = true;
   this->UseNonOverlappingAMRMetaDataForOutlines = true;
-
-  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_RANGES(), 1);
-  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_BOUNDS(), 1);
-  this->GetInformation()->Set(vtkAlgorithm::PRESERVES_TOPOLOGY(), 1);
 }
 
 //----------------------------------------------------------------------------

@@ -26,7 +26,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkPriorityHelper.h"
 #include "vtkProcessModule.h"
-#include "vtkPVExtentTranslator.h"
 #include "vtkPVInstantiator.h"
 #include "vtkPVPostFilter.h"
 #include "vtkPVXMLElement.h"
@@ -156,7 +155,6 @@ bool vtkSISourceProxy::InitializeOutputPort(vtkAlgorithm* algo, int port)
 {
   // Save the output port in internal data-structure.
   this->Internals->OutputPorts[port] = algo->GetOutputPort(port);
-  this->CreateTranslatorIfNecessary(algo, port);
 
   int num_of_required_inputs = 0;
   int numInputs = algo->GetNumberOfInputPorts();
@@ -182,34 +180,6 @@ bool vtkSISourceProxy::InitializeOutputPort(vtkAlgorithm* algo, int port)
     //add the post filters to the source proxy
     //so that we can do automatic conversion of properties.
     this->InsertPostFilterIfNecessary(algo, port);
-    }
-  return true;
-}
-
-//----------------------------------------------------------------------------
-// Create the extent translator (sources with no inputs only).
-// Needs to be before "ExtractPieces" because translator propagates.
-bool vtkSISourceProxy::CreateTranslatorIfNecessary(vtkAlgorithm* algo, int port)
-{
-  if(this->DisableExtentsTranslator)
-    {
-    return false;
-    }
-
-  // Do not overwrite custom extent translators.
-  // PVExtent translator should really be the default,
-  // Then we would not need to do this.
-  vtkStreamingDemandDrivenPipeline* sddp =
-    vtkStreamingDemandDrivenPipeline::SafeDownCast(algo->GetExecutive());
-  assert(sddp != NULL);
-  vtkExtentTranslator* translator = sddp->GetExtentTranslator(port);
-  if (strcmp(translator->GetClassName(), "vtkExtentTranslator") == 0)
-    {
-    vtkPVExtentTranslator* pvtranslator = vtkPVExtentTranslator::New();
-    pvtranslator->SetOriginalSource(algo);
-    pvtranslator->SetPortIndex(port);
-    sddp->SetExtentTranslator(port, pvtranslator);
-    pvtranslator->Delete();
     }
   return true;
 }

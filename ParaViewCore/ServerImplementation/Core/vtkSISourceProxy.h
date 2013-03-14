@@ -95,12 +95,6 @@ protected:
   virtual bool InitializeOutputPort(vtkAlgorithm* alo, int port);
 
   // Description:
-  // Create the extent translator (sources with no inputs only).
-  // Needs to be before "ExtractPieces" because translator propagates.
-  // Returns true if the translator was created.
-  bool CreateTranslatorIfNecessary(vtkAlgorithm* algo, int port);
-
-  // Description:
   // Insert a filter to extract (and redistribute) unstructured
   // pieces if the source cannot generate pieces.
   void InsertExtractPiecesIfNecessary(vtkAlgorithm* algo, int port);

@@ -123,9 +123,13 @@ int vtkStructuredGridVolumeRepresentation::ProcessViewRequest(
       vtkAlgorithm* inputAlgo = connection->GetProducer();
       vtkStreamingDemandDrivenPipeline* sddp =
         vtkStreamingDemandDrivenPipeline::SafeDownCast(inputAlgo->GetExecutive());
-      vtkExtentTranslator* translator =
+      vtkExtentTranslator* translator = 0;
+      // TODO (berk)
+      // Need to fix this
+      /*
         sddp->GetExtentTranslator(connection->GetIndex());
-    
+      */
+
       int whole_extent[6] = {1, -1, 1, -1, 1, -1};
       sddp->GetWholeExtent(sddp->GetOutputInformation(connection->GetIndex()),
         whole_extent);
