@@ -448,11 +448,13 @@ int vtkXMLCollectionReader::RequestInformation(
     this->Internal->Readers[0]->CopyOutputInformation(
       info, 0);
     }
+  /*
   else
     {
     info->Set(
       vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
     }
+  */
   this->Superclass::RequestInformation(request, inputVector, outputVector);
 
   return 1;

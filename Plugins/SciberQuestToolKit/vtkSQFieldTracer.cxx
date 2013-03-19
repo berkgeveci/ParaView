@@ -614,14 +614,16 @@ int vtkSQFieldTracer::RequestUpdateExtent(
 int vtkSQFieldTracer::RequestInformation(
                 vtkInformation *vtkNotUsed(request),
                 vtkInformationVector **vtkNotUsed(inputVector),
-                vtkInformationVector *outputVector)
+                vtkInformationVector *vtkNotUsed(outputVector))
 {
   #if vtkSQFieldTracerDEBUG>1
   pCerr() << "=====vtkSQFieldTracer::RequestInformation" << endl;
   #endif
 
+  /*
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),-1);
+  */
 
   return 1;
 }

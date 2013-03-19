@@ -55,12 +55,14 @@ vtkSQLineSource::vtkSQLineSource(int res)
 int vtkSQLineSource::RequestInformation(
   vtkInformation *vtkNotUsed(request),
   vtkInformationVector **vtkNotUsed(inputVector),
-  vtkInformationVector *outputVector)
+  vtkInformationVector *vtkNotUsed(outputVector))
 {
 
+  /*
   // let the pipeline know we can handle our own domain decomp
   vtkInformation *outInfo = outputVector->GetInformationObject(0);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),-1);
+  */
 
   return 1;
 }

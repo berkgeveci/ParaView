@@ -44,6 +44,7 @@ int vtkUpdateSuppressorPipeline::ProcessRequest(vtkInformation* request,
                                                 vtkInformationVector** inInfo,
                                                 vtkInformationVector* outInfo)
 {
+  /*
   if(this->Algorithm && request->Has(REQUEST_DATA()))
     {
     vtkInformation* info = outInfo->GetInformationObject(0);
@@ -60,7 +61,8 @@ int vtkUpdateSuppressorPipeline::ProcessRequest(vtkInformation* request,
       info->Set(MAXIMUM_NUMBER_OF_PIECES(), -1);
       }
     }
-  
+  */
+
   if (this->Enabled)
     {
     if(this->Algorithm && request->Has(REQUEST_DATA()))

@@ -65,11 +65,13 @@ int vtkSQRandomSeedPoints::FillInputPortInformation(
 int vtkSQRandomSeedPoints::RequestInformation(
     vtkInformation * /*req*/,
     vtkInformationVector ** /*inInfos*/,
-    vtkInformationVector *outInfos)
+    vtkInformationVector */*outInfos*/)
 {
+  /*
   // tell the excutive that we are handling our own paralelization.
   vtkInformation *outInfo=outInfos->GetInformationObject(0);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),-1);
+  */
   return 1;
 }
 

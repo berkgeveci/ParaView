@@ -69,10 +69,12 @@ int vtkCellPointsFilter::FillInputPortInformation(int port,
 //---------------------------------------------------------------------------
 int vtkCellPointsFilter::RequestInformation(vtkInformation*,
     vtkInformationVector**,
-    vtkInformationVector* outputVector)
+    vtkInformationVector*)
 {
+  /*
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
   outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
+  */
   return 1;
 }
 //---------------------------------------------------------------------------

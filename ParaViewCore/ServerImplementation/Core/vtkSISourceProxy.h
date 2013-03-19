@@ -95,11 +95,6 @@ protected:
   virtual bool InitializeOutputPort(vtkAlgorithm* alo, int port);
 
   // Description:
-  // Insert a filter to extract (and redistribute) unstructured
-  // pieces if the source cannot generate pieces.
-  void InsertExtractPiecesIfNecessary(vtkAlgorithm* algo, int port);
-
-  // Description:
   // Insert a filter to create the Post Filter
   // so that filters can request data conversions
   void InsertPostFilterIfNecessary(vtkAlgorithm* algo, int port);

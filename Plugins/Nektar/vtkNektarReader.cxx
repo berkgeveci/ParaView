@@ -590,8 +590,10 @@ int vtkNektarReader::RequestInformation(
       vtkInformation *outInfo =
     outputVector->GetInformationObject(0);
 
+      /*
       outInfo->Set(vtkStreamingDemandDrivenPipeline::
        MAXIMUM_NUMBER_OF_PIECES(), -1);
+      */
 
       this->IAM_INITIALLIZED = true;
   }// if(!this->IAM_INITIALLIZED)

@@ -378,7 +378,7 @@ int vtkGMVReader::RequestData(vtkInformation *vtkNotUsed(request),
 
             output->SetBlock(blockNo, sgrid);
             this->Mesh = sgrid;
-            outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),1);
+            // outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),1);
             output->GetMetaData(blockNo)->Set(vtkCompositeDataSet::NAME(), "Element Sets");
 
             GMVRead::gmvread_mesh();
@@ -398,7 +398,7 @@ int vtkGMVReader::RequestData(vtkInformation *vtkNotUsed(request),
             vtkRectilinearGrid *rgrid = vtkRectilinearGrid::New();
             output->SetBlock(blockNo, rgrid);
             this->Mesh = rgrid;
-            outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),1);
+            //outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),1);
             output->GetMetaData(blockNo)->Set(vtkCompositeDataSet::NAME(), "Element Sets");
 
             dims[0] = GMVRead::gmv_data.ndoubledata1;
@@ -471,7 +471,7 @@ int vtkGMVReader::RequestData(vtkInformation *vtkNotUsed(request),
             ugrid->Allocate(this->NumberOfCells);
             output->SetBlock(blockNo, ugrid);
             this->Mesh = ugrid;
-            outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),1);
+            //outInfo->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),1);
             output->GetMetaData(blockNo)->Set(vtkCompositeDataSet::NAME(), "Element Sets");
 
 

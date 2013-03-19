@@ -267,18 +267,18 @@ int vtkMPIMoveData::RequestInformation(vtkInformation*,
                                        vtkInformationVector** inputVector,
                                        vtkInformationVector* outputVector)
 {
-  vtkInformation* outInfo = outputVector->GetInformationObject(0);
-  if (inputVector[0]->GetNumberOfInformationObjects() > 0)
-    {
-    outInfo->Set(
-      vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),
-      inputVector[0]->GetInformationObject(0)->Get(
-        vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES()));
-    return 1;
-    }
+  // vtkInformation* outInfo = outputVector->GetInformationObject(0);
+  // if (inputVector[0]->GetNumberOfInformationObjects() > 0)
+  //   {
+  //   outInfo->Set(
+  //     vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),
+  //     inputVector[0]->GetInformationObject(0)->Get(
+  //       vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES()));
+  //   return 1;
+  //   }
 
-  outInfo->Set(
-    vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
+  // outInfo->Set(
+  //   vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
 
   return 1;
 }

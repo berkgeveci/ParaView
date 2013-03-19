@@ -195,11 +195,11 @@ int vtkPVMultiServerDataSource::RequestDataObject(
 int vtkPVMultiServerDataSource::RequestInformation(
     vtkInformation *, vtkInformationVector **, vtkInformationVector *outputVector)
 {
-  // Provide the time informations if any
-  vtkInformation *info = outputVector->GetInformationObject(0);
+  // // Provide the time informations if any
+  // vtkInformation *info = outputVector->GetInformationObject(0);
 
-  // Deal with Number of pieces
-  info->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), 1);
+  // // Deal with Number of pieces
+  // info->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), 1);
 
   return 1;
 }

@@ -582,9 +582,11 @@ int vtkPPhastaReader::RequestInformation(vtkInformation*,
   this->TimeStepRange[0] = 0;
   this->TimeStepRange[1] = numTimeSteps-1;
 
+  /*
   vtkInformation* info = outputVector->GetInformationObject(0);
   info->Set(
     vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(), -1);
+  */
 
   return 1;
 }

@@ -205,7 +205,7 @@ int vtkSpyPlotReader::RequestInformation(vtkInformation *request,
     }
 
   vtkInformation *info=outputVector->GetInformationObject(0);
-  info->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),-1);
+  //info->Set(vtkStreamingDemandDrivenPipeline::MAXIMUM_NUMBER_OF_PIECES(),-1);
 
   struct stat fs;
   if(stat(this->FileName,&fs)!=0)
