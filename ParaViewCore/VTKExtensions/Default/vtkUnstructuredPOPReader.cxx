@@ -927,7 +927,9 @@ bool vtkUnstructuredPOPReader::Transform(
       {
       // the last layer of ghost cells was added in order to do the vertical velocity calculation.
       // it needs to be removed now.
-      grid->RemoveGhostCells(numberOfGhostLevels);
+      // TODO: Berk
+      // This needs to be fixed
+      //grid->RemoveGhostCells(numberOfGhostLevels);
       }
     }
 

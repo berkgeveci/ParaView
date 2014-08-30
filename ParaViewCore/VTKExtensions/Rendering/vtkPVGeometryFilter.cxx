@@ -1530,7 +1530,7 @@ void vtkPVGeometryFilter::PolyDataExecute(
       stripper->SetPassThroughCellIds(this->PassThroughCellIds);
       //stripper->SetPassThroughPointIds(this->PassThroughPointIds);
       inCopy->ShallowCopy(input);
-      inCopy->RemoveGhostCells(1);
+      inCopy->RemoveGhostCells();
       stripper->SetInputData(inCopy);
       stripper->Update();
       out->CopyStructure(stripper->GetOutput());
@@ -1574,7 +1574,7 @@ void vtkPVGeometryFilter::PolyDataExecute(
         originalPointIds->Delete();
         originalPointIds = NULL;
         }
-      out->RemoveGhostCells(1);
+      out->RemoveGhostCells();
       }
     return;
     }
@@ -1773,7 +1773,7 @@ void vtkPVGeometryFilter::RemoveGhostCells(vtkPolyData* output)
   vtkDataArray* ghost = output->GetCellData()->GetArray("vtkGhostLevels");
   if (ghost)
     {
-    output->RemoveGhostCells(1);
+    output->RemoveGhostCells();
     }
 }
 
