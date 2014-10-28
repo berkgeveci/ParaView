@@ -902,7 +902,7 @@ int vtkPVGeometryFilter::RequestCompositeData(vtkInformation*,
 
     vtkPolyData* tmpOut = vtkPolyData::New();
     this->ExecuteBlock(block, tmpOut, 0, 0, 1, 0, wholeExtent);
-    this->CleanupOutputData(tmpOut, 0);
+    //this->CleanupOutputData(tmpOut, 0);
     //skip empty nodes.
     if (tmpOut->GetNumberOfPoints() > 0)
       {

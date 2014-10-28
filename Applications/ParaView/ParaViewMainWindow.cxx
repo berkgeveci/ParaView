@@ -72,6 +72,8 @@ extern "C" {
   typedef vtkQtDebugLeaksView DebugLeaksViewType;
 #endif
 
+#include "vtkSMPTools.h"
+
 class ParaViewMainWindow::pqInternals : public Ui::pqClientMainWindow
 {
 };
@@ -79,6 +81,8 @@ class ParaViewMainWindow::pqInternals : public Ui::pqClientMainWindow
 //-----------------------------------------------------------------------------
 ParaViewMainWindow::ParaViewMainWindow()
 {
+  vtkSMPTools::Initialize(32);
+
   // the debug leaks view should be constructed as early as possible
   // so that it can monitor vtk objects created at application startup.
   if (getenv("PV_DEBUG_LEAKS_VIEW"))
