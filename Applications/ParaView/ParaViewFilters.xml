@@ -128,6 +128,7 @@
   <Proxy group="filters" name="ClipClosedSurface" />
   <Proxy group="filters" name="Contour" />
   <Proxy group="filters" name="ThreadedContour" />
+  <Proxy group="filters" name="ThreadedSlice" />
   <Proxy group="filters" name="Curvatures" />
   <Proxy group="filters" name="Cut" />
   <Proxy group="filters" name="CutEverything" />

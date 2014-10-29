@@ -81,7 +81,7 @@ class ParaViewMainWindow::pqInternals : public Ui::pqClientMainWindow
 //-----------------------------------------------------------------------------
 ParaViewMainWindow::ParaViewMainWindow()
 {
-  vtkSMPTools::Initialize(32);
+  vtkSMPTools::Initialize();
 
   // the debug leaks view should be constructed as early as possible
   // so that it can monitor vtk objects created at application startup.
